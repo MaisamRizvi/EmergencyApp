@@ -41,29 +41,37 @@ class _MyHomePageState extends State<MyHomePage> {
     'https://5.imimg.com/data5/VN/YP/MY-33296037/orange-600x600-500x500.jpg',
     'https://5.imimg.com/data5/GJ/MD/MY-35442270/fresh-pineapple-500x500.jpg'
   ];
+  // ignore: non_constant_identifier_names
   final List<FruitDataModel> Fruitdata = List.generate(
       fruitname.length,
-      (index) => FruitDataModel('${fruitname[index]}', '${url[index]}',
+      (index) => FruitDataModel(fruitname[index], '${url[index]}',
           '${fruitname[index]} Description...'));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Emergency Fruits'),
+          title: const Text('Emergency Fruits'),
         ),
-        body: ListView.builder(
-            itemCount: Fruitdata.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(Fruitdata[index].name),
-                  leading: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: Image.network(Fruitdata[index].ImageUrl),
-                  ),
-                ),
-              );
-            }));
+        body: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          children: List.generate(fruitname.length, (index) {
+            return Center(
+                child: Card(
+                    elevation: 4,
+                    child: InkWell(
+                      onTap: () {
+                        print("Click worked");
+                      },
+                      child: ListTile(
+                        title: Text(Fruitdata[index].name),
+                        leading: SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: Image.network(Fruitdata[index].ImageUrl)),
+                      ),
+                    )));
+          }),
+        ));
   }
 }

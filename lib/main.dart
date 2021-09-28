@@ -64,17 +64,19 @@ class _ContactsDataState extends State<ContactsData> {
                   itemCount: emergencyContactsName.length,
                   itemBuilder: (BuildContext context, index) {
                     EmergencyContacts _contacts = emergencyContacts[index];
-                    return Card(
-                        elevation: 4,
-                        child: InkWell(
-                            onTap: () {
-                              print("Click worked");
-                            },
-                            child: ListTile(
-                                title: Text(_contacts.name),
-                                subtitle: Text(_contacts.contactNo),
-                                leading: CircleAvatar(
-                                    child: Text(_contacts.initials)))));
+                    return SizedBox(
+                        height: 100,
+                        child: Card(
+                            elevation: 4,
+                            child: InkWell(
+                                onTap: () {
+                                  print("Click worked");
+                                },
+                                child: ListTile(
+                                    title: Text(_contacts.name),
+                                    subtitle: Text(_contacts.contactNo),
+                                    leading: CircleAvatar(
+                                        child: Text(_contacts.initials))))));
                   })
             ])));
   }

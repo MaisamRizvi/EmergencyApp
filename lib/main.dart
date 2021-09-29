@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 // import 'FruitDataModel.dart';
 import 'EmergencyContacts.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.red,
       ),
       home: ContactsData(),
       debugShowCheckedModeBanner: false,
@@ -69,14 +70,19 @@ class _ContactsDataState extends State<ContactsData> {
                         child: Card(
                             elevation: 4,
                             child: InkWell(
-                                onTap: () {
-                                  print("Click worked");
+                                onTap: () async {
+                                  await FlutterPhoneDirectCaller.callNumber(
+                                      '111');
+                                  ;
                                 },
                                 child: ListTile(
                                     title: Text(_contacts.name),
                                     subtitle: Text(_contacts.contactNo),
+                                    dense: true,
                                     leading: CircleAvatar(
-                                        child: Text(_contacts.initials))))));
+                                      child:
+                                          Icon(Icons.call, color: Colors.white),
+                                    )))));
                   })
             ])));
   }

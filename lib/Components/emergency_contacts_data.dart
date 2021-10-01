@@ -41,6 +41,7 @@ class _ContactsDataState extends State<ContactsData> {
       emergencyContactsName.length,
       (index) => EmergencyContacts(emergencyContactsInitials[index],
           emergencyContactsName[index], emergencyContactsNo[index]));
+  String? _selectedCity;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,15 +50,22 @@ class _ContactsDataState extends State<ContactsData> {
             child: Column(children: <Widget>[
               DropdownButton(
                 iconEnabledColor: Colors.redAccent,
-                hint: const Text("Select City"),
-                items: <String>["Karachi", "Lahore", "Islamabad"]
-                    .map((String city) {
+                hint: _selectedCity == null
+                    ? const Text('Select City')
+                    : Text(
+                        _selectedCity!,
+                      ),
+                items: <String>["Karachi", "Lahore", "Islamabad"].map((city) {
                   return DropdownMenuItem<String>(
                     value: city,
                     child: Text(city),
                   );
                 }).toList(),
-                onChanged: (_) {},
+                onChanged: (city) {
+                  setState(() {
+                    _selectedCity = city.toString();
+                  });
+                },
               ),
               ListView.builder(
                   shrinkWrap: true,

@@ -47,6 +47,18 @@ class _ContactsDataState extends State<ContactsData> {
         body: Container(
             padding: const EdgeInsets.all(15),
             child: Column(children: <Widget>[
+              DropdownButton(
+                iconEnabledColor: Colors.redAccent,
+                hint: const Text("Select City"),
+                items: <String>["Karachi", "Lahore", "Islamabad"]
+                    .map((String city) {
+                  return DropdownMenuItem<String>(
+                    value: city,
+                    child: Text(city),
+                  );
+                }).toList(),
+                onChanged: (_) {},
+              ),
               ListView.builder(
                   shrinkWrap: true,
                   itemCount: emergencyContactsName.length,

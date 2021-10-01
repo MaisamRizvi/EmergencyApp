@@ -15,7 +15,7 @@ class _PersonalEmergencyContactsState extends State<PersonalEmergencyContacts> {
       body: Center(child: Text("Personal Contacts")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        tooltip: 'Increment',
+        tooltip: 'Add Contacts',
         child: const Icon(Icons.add),
       ),
     );

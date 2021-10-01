@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-// import 'FruitDataModel.dart';
-import 'EmergencyContacts.dart';
+import 'package:flutter_application_1/home_tabs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,84 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const ContactsData(),
+      home: const HomeScreenTabs(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class ContactsData extends StatefulWidget {
-  const ContactsData({Key? key}) : super(key: key);
-  @override
-  _ContactsDataState createState() => _ContactsDataState();
-}
-
-class _ContactsDataState extends State<ContactsData> {
-  static List<String> emergencyContactsName = [
-    "Edhi Ambulance",
-    "Civil Hospital",
-    "Police Emergency",
-    "Rescue Service",
-  ];
-  static List<String> emergencyContactsInitials = [
-    "EA",
-    "CH",
-    "PE",
-    "RS",
-  ];
-
-  static List<dynamic> icons = [
-    Icons.home_mini_rounded,
-    Icons.call_made_rounded,
-    Icons.alarm_rounded,
-    Icons.run_circle_rounded,
-  ];
-  static List<String> emergencyContactsNo = [
-    "tel: 115",
-    "tel: 99215960",
-    "tel: 15",
-    "tel: 1122",
-  ];
-
-  final List<EmergencyContacts> emergencyContacts = List.generate(
-      emergencyContactsName.length,
-      (index) => EmergencyContacts(emergencyContactsInitials[index],
-          emergencyContactsName[index], emergencyContactsNo[index]));
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("Emergency Contacts"),
-        ),
-        body: Container(
-            padding: const EdgeInsets.all(15),
-            child: Column(children: <Widget>[
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: emergencyContactsName.length,
-                  itemBuilder: (BuildContext context, index) {
-                    EmergencyContacts _contacts = emergencyContacts[index];
-                    return SizedBox(
-                        height: 100,
-                        child: Card(
-                            elevation: 4,
-                            child: InkWell(
-                                onTap: () async {
-                                  await canLaunch(_contacts.contactNo)
-                                      ? await launch(_contacts.contactNo)
-                                      : throw 'Could not launch "$_contacts.contactNo"';
-                                },
-                                child: ListTile(
-                                    title: Text(_contacts.name),
-                                    subtitle: Text(_contacts.contactNo),
-                                    dense: true,
-                                    leading: CircleAvatar(
-                                        child: Icon(icons[index]))))));
-                  })
-            ])));
-  }
-}   
+   
 
 // class MyHomePage extends StatefulWidget {
 //   const MyHomePage({Key? key}) : super(key: key);

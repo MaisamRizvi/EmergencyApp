@@ -25,10 +25,10 @@ class _ContactsDataState extends State<ContactsData> {
   ];
 
   static List<dynamic> icons = [
-    Icons.home_mini_rounded,
-    Icons.call_made_rounded,
-    Icons.alarm_rounded,
-    Icons.run_circle_rounded,
+    Icons.local_shipping,
+    Icons.medical_services,
+    Icons.local_police,
+    Icons.support,
   ];
   static List<String> emergencyContactsNo = [
     "tel: 115",

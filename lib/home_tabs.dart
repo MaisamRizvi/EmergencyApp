@@ -39,7 +39,7 @@ class _HomeScreenTabsState extends State<HomeScreenTabs>
           indicatorColor: Colors.white,
           tabs: const <Widget>[
             Tab(text: "Emergency Contacts"),
-            Tab(text: "Personal Emergency Contacts")
+            Tab(text: "Personal Contacts")
           ],
         ),
         actions: const <Widget>[Icon(Icons.search)],

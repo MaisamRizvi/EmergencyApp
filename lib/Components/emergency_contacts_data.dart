@@ -34,7 +34,7 @@ class _ContactsDataState extends State<ContactsData> {
     "tel: 115",
     "tel: 99215960",
     "tel: 15",
-    "tel: 1122",
+    "tel: 021 1122",
   ];
 
   final List<EmergencyContacts> emergencyContacts = List.generate(
@@ -47,48 +47,52 @@ class _ContactsDataState extends State<ContactsData> {
     return Scaffold(
         body: Container(
             padding: const EdgeInsets.all(15),
-            child: Column(children: <Widget>[
-              DropdownButton(
-                iconEnabledColor: Colors.redAccent,
-                hint: _selectedCity == null
-                    ? const Text('Select City')
-                    : Text(
-                        _selectedCity!,
-                      ),
-                items: <String>["Karachi", "Lahore", "Islamabad"].map((city) {
-                  return DropdownMenuItem<String>(
-                    value: city,
-                    child: Text(city),
-                  );
-                }).toList(),
-                onChanged: (city) {
-                  setState(() {
-                    _selectedCity = city.toString();
-                  });
-                },
-              ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: emergencyContactsName.length,
-                  itemBuilder: (BuildContext context, index) {
-                    EmergencyContacts _contacts = emergencyContacts[index];
-                    return SizedBox(
-                        height: 100,
-                        child: Card(
-                            elevation: 4,
-                            child: InkWell(
-                                onTap: () async {
-                                  var phoneNo = _contacts.contactNo;
-                                  await FlutterPhoneDirectCaller.callNumber(
-                                      phoneNo);
-                                },
-                                child: ListTile(
-                                    title: Text(_contacts.name),
-                                    subtitle: Text(_contacts.contactNo),
-                                    dense: true,
-                                    leading: CircleAvatar(
-                                        child: Icon(icons[index]))))));
-                  })
+            child: Wrap(children: [
+              Column(children: <Widget>[
+                DropdownButton(
+                  iconEnabledColor: Colors.redAccent,
+                  hint: _selectedCity == null
+                      ? const Text('Select City')
+                      : Text(
+                          _selectedCity!,
+                        ),
+                  items: <String>["Karachi", "Lahore", "Islamabad"].map((city) {
+                    return DropdownMenuItem<String>(
+                      value: city,
+                      child: Text(city),
+                    );
+                  }).toList(),
+                  onChanged: (city) {
+                    setState(() {
+                      _selectedCity = city.toString();
+                    });
+                  },
+                ),
+                ListView.builder(
+                    physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
+                    shrinkWrap: true,
+                    itemCount: emergencyContactsName.length,
+                    itemBuilder: (BuildContext context, index) {
+                      EmergencyContacts _contacts = emergencyContacts[index];
+                      return SizedBox(
+                          height: 100,
+                          child: Card(
+                              elevation: 4,
+                              child: InkWell(
+                                  onTap: () async {
+                                    var phoneNo = _contacts.contactNo;
+                                    await FlutterPhoneDirectCaller.callNumber(
+                                        phoneNo);
+                                  },
+                                  child: ListTile(
+                                      title: Text(_contacts.name),
+                                      subtitle: Text(_contacts.contactNo),
+                                      dense: true,
+                                      leading: CircleAvatar(
+                                          child: Icon(icons[index]))))));
+                    })
+              ])
             ])));
   }
 }

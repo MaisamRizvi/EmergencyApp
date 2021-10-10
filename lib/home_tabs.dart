@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Components/emergency_contacts_data.dart';
 import 'package:flutter_application_1/Components/personal_emergency_contacts.dart';
@@ -44,8 +46,8 @@ class _HomeScreenTabsState extends State<HomeScreenTabs>
         ),
         actions: const <Widget>[Icon(Icons.search)],
       ),
-      body: TabBarView(
-          controller: _controller,
+      body: TabBarView(controller: _controller,
+          // ignore: prefer_const_literals_to_create_immutables
           children: <Widget>[ContactsData(), PersonalEmergencyContacts()]),
     );
   }

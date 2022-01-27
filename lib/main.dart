@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home_tabs.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const RestorationScope(restorationId: 'root', child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Emergency App',
+      title: '1ClickAway',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),

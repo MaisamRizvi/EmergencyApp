@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class PersonalEmergencyContacts extends StatefulWidget {
+  
   const PersonalEmergencyContacts({Key? key}) : super(key: key);
+
 
   @override
   _PersonalEmergencyContactsState createState() =>
@@ -37,27 +38,29 @@ class _PersonalEmergencyContactsState extends State<PersonalEmergencyContacts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-          shrinkWrap: true,
-          itemCount: emergencyContactsName.length,
-          itemBuilder: (BuildContext context, index) {
-            return SizedBox(
-                height: 100,
-                child: Card(
-                    elevation: 4,
-                    child: InkWell(
-                        onTap: () async {
-                          var phoneNo = emergencyContactsNo[index];
-                          await FlutterPhoneDirectCaller.callNumber(phoneNo);
-                        },
-                        child: ListTile(
-                            title: Text(emergencyContactsName[index]),
-                            subtitle: Text(emergencyContactsNo[index]),
-                            dense: true,
-                            leading: CircleAvatar(
-                                child:
-                                    Text(emergencyContactsInitials[index]))))));
-          }),
+      body: Scrollbar(
+          child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: emergencyContactsName.length,
+              itemBuilder: (BuildContext context, index) {
+                return SizedBox(
+                    height: 100,
+                    child: Card(
+                        elevation: 4,
+                        child: InkWell(
+                            onTap: () async {
+                              var phoneNo = emergencyContactsNo[index];
+                              await FlutterPhoneDirectCaller.callNumber(
+                                  phoneNo);
+                            },
+                            child: ListTile(
+                                title: Text(emergencyContactsName[index]),
+                                subtitle: Text(emergencyContactsNo[index]),
+                                dense: true,
+                                leading: CircleAvatar(
+                                    child: Text(
+                                        emergencyContactsInitials[index]))))));
+              })),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showDialog<String>(
           context: context,

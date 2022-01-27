@@ -34,7 +34,7 @@ class _HomeScreenTabsState extends State<HomeScreenTabs>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("1ClickAway"),
+        title: const Text("1ClickHelp"),
         elevation: 0.7,
         bottom: TabBar(
           controller: _controller,

@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '1ClickAway',
+      title: '1ClickHelp',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),

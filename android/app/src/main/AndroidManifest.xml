@@ -18,7 +18,7 @@
           </intent>
         </queries>
    <application
-        android:label="Emergency Contacts App"
+        android:label="1ClickHelp"
         android:icon="@mipmap/ic_launcher">
 
         <activity

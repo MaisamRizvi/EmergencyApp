@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Components/emergency_contacts_data.dart';
-import 'package:flutter_application_1/Components/demoContacts.dart';
+import 'package:flutter_application_1/Components/personal_emergency_contacts.dart';
 
 class HomeScreenTabs extends StatefulWidget {
   const HomeScreenTabs({Key? key}) : super(key: key);

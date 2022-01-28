@@ -17,7 +17,7 @@ class DBHelper {
 
   initDatabase() async {
     io.Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, 'contacts.db');
+    String path = join(documentDirectory.path, 'EmergencyContacts.db');
     var db = await openDatabase(path, version: 1, onCreate: _onCreate);
     return db;
   }
@@ -29,9 +29,11 @@ class DBHelper {
 
   Future<PersonalEmergency> add(PersonalEmergency contacts) async {
     var dbClient = await db;
-    dbClient.rawInsert("INSERT into contacts(name,contactNo)"
-        "VALUES (($contacts.name),($contacts.contactNo))");
-    // dbClient.insert('contacts', contacts.toMap());
+    var name = contacts.name;
+    var contactNo = contacts.contactNo;
+    dbClient.rawInsert(
+        "INSERT into contacts(name,contactNo)"
+            "VALUES(?, ?)",[name,contactNo]);
     return contacts;
   }
 

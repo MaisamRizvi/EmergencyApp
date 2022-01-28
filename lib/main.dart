@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Components/splash_screen.dart';
 import 'package:flutter_application_1/home_tabs.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
   runApp(const RestorationScope(restorationId: 'root', child: MyApp()));
@@ -16,7 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const HomeScreenTabs(),
+      home: AnimatedSplashScreen(
+          duration: 3000,
+          splash: const SplashScreen(),
+          nextScreen: const HomeScreenTabs(),
+          splashTransition: SplashTransition.fadeTransition,
+          backgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
     );
   }

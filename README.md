@@ -14,7 +14,7 @@ Due to such and more similar reasons this app we think is a basic neccessity for
 ### Video walkthrough of App:
 <br/>
 <center>
-    <iframe allowfullscreen="allowfullscreen" src="https://youtu.be/plD48hEryxY"view" />
+    <iframe allowfullscreen="allowfullscreen" src="https://youtu.be/plD48hEryxY" />
 </center>
 
 ### App Photos & Description:

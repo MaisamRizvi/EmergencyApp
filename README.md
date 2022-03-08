@@ -14,9 +14,9 @@ Due to such and more similar reasons this app we think is a basic neccessity for
 ### Video walkthrough of App:
 <br/>
 <center>
-
-    [![Live Demo](https://github.com/MaisamRizvi/EmergencyApp/blob/master/Images/Homescreen.png)](https://youtu.be/plD48hEryxY "1ClickAway Live Demo - Click to Watch!")
-
+    
+<iframe width="560" height="315" src="https://www.youtube.com/embed/plD48hEryxY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
 </center>
 
 ### App Photos & Description:
